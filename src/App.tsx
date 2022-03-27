@@ -80,9 +80,14 @@ const App = () => {
         setDisabled(st => {
             return [...st, i]
         })
+
     }
     let degree:number = 360 / eatsPizza.length
     let step:number = 0
+
+    const disable = (i:number) =>{
+        return i === disabled.find(value => value === i);
+    }
 
     return (
         <div className="App">
@@ -108,9 +113,9 @@ const App = () => {
                                             {priceForEvery} BYN
                                         </td>
                                         <td>
-                                            <button disabled={i === disabled.find(value => value === i)}
+                                            <button disabled={disable(i)}
                                                     onClick={() => payPerson(i)}>
-                                                {i === disabled.find(value => value === i)
+                                                {disable(i)
                                                     ? <span>PAID</span>
                                                     : <span>PAY</span>}
                                             </button>
